@@ -28,3 +28,8 @@ const gameboard = (function Gameboard() {
 
   return { getBoard, placeMarker, resetBoard, }
 })();
+
+function Player(name, marker) {
+  const getName = () => name;
+  const getMarker = () => marker;
+}
