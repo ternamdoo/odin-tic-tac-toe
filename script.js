@@ -14,5 +14,10 @@ const gameboard = (function Gameboard() {
 
   const getBoard = () => board;
   
-  return { getBoard }
+  const placeMarker = (row, col, marker) => {
+    board[row][col] = marker;
+    console.log(getBoard());
+  }
+
+  return { getBoard, placeMarker, }
 })();
