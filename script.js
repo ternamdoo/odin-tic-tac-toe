@@ -19,5 +19,12 @@ const gameboard = (function Gameboard() {
     console.log(getBoard());
   }
 
-  return { getBoard, placeMarker, }
+  const resetBoard = () => {
+    board.forEach(row => {
+      row.fill("");
+    });
+    console.log(getBoard());
+  }
+
+  return { getBoard, placeMarker, resetBoard, }
 })();
