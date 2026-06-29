@@ -24,7 +24,7 @@ const gameboard = (function Gameboard() {
       row.fill("");
     });
     console.log(getBoard());
-  }
+  } 
 
   return { getBoard, placeMarker, resetBoard, }
 })();
