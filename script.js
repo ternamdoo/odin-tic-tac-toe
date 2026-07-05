@@ -15,8 +15,11 @@ const gameboard = (function Gameboard() {
   const getBoard = () => board;
   
   const placeMarker = (row, col, marker) => {
+    if (board[row[col]] == "") {
+      return false;
+    }
     board[row][col] = marker;
-    console.log(getBoard());
+    // console.log(getBoard());
   }
 
   const resetBoard = () => {
