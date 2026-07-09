@@ -42,14 +42,22 @@ function Player(name, marker) {
 const gameController = (function gameController() {
   const player1 = Player('Player1', 'X');
   const player2 = Player('Player2', 'O');
+  
   let activePlayer = player1;
   const getActivePlayer = () => activePlayer;
   const switchActivePlayer = () => {
     activePlayer = activePlayer === player1 ? player2 : player1;
   };
+
   const printNewRound = () => {
     console.log(gameboard.getBoard());
     console.log(`${getActivePlayer().getName()}'s Turn`);
+  }
+
+  const playRound = (row, col) => {
+    gameboard.placeMarker(row, col, activePlayer.getMarker());
+    switchActivePlayer();
+    printNewRound();
   }
 
   return { getActivePlayer, switchActivePlayer, printNewRound, }
