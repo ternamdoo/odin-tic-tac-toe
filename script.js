@@ -15,10 +15,13 @@ const gameboard = (function Gameboard() {
   const getBoard = () => board;
   
   const placeMarker = (row, col, marker) => {
-    if (board[row[col]] == "") {
+    if (board[row][col] === "") {
+      board[row][col] = marker;
+      return true;
+    } else {
+      console.log("You picked a marked spot. Look at the board and place your marker in an unmarked spot");
       return false;
     }
-    board[row][col] = marker;
     // console.log(getBoard());
   }
 
