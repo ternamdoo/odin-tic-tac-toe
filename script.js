@@ -55,7 +55,7 @@ const gameController = (function gameController() {
   }
 
   const printNewRound = () => {
-    console.log(gameboard.getBoard());
+    printBoard();
     console.log(`It's ${getActivePlayer().getName()}'s Turn`);
   }
 
@@ -65,5 +65,8 @@ const gameController = (function gameController() {
     printNewRound();
   }
 
-  return { getActivePlayer, switchActivePlayer, printNewRound, playRound, printBoard, }
+  // Display the board and announce the first player's turn
+  printNewRound();
+
+  return { getActivePlayer, switchActivePlayer, printNewRound, playRound, }
 })();
