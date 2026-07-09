@@ -45,6 +45,14 @@ const gameController = (function gameController() {
   const switchActivePlayer = () => {
     activePlayer = activePlayer === player1 ? player2 : player1;
   };
+  
+  // copy the board and display it in an easy to read format
+  const printBoard = () => {
+    const board = gameboard.getBoard();
+    board.forEach((row) => {
+      console.log(row.map((cell) => cell || ".").join(" | "))
+    });
+  }
 
   const printNewRound = () => {
     console.log(gameboard.getBoard());
@@ -57,5 +65,5 @@ const gameController = (function gameController() {
     printNewRound();
   }
 
-  return { getActivePlayer, switchActivePlayer, printNewRound, }
+  return { getActivePlayer, switchActivePlayer, printNewRound, playRound, printBoard, }
 })();
