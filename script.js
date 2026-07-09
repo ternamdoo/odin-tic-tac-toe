@@ -48,7 +48,7 @@ const gameController = (function gameController() {
 
   const printNewRound = () => {
     console.log(gameboard.getBoard());
-    console.log(`${getActivePlayer().getName()}'s Turn`);
+    console.log(`It's ${getActivePlayer().getName()}'s Turn`);
   }
 
   const playRound = (row, col) => {
