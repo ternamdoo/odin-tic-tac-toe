@@ -48,10 +48,18 @@ const gameController = (function gameController() {
   const switchActivePlayer = () => {
     activePlayer = activePlayer === player1 ? player2 : player1;
   };
+  
+  // copy the board and display it in an easy to read format
+  const printBoard = () => {
+    const board = gameboard.getBoard();
+    board.forEach((row) => {
+      console.log(row.map((cell) => cell || ".").join(" | "))
+    });
+  }
 
   const printNewRound = () => {
-    console.log(gameboard.getBoard());
-    console.log(`${getActivePlayer().getName()}'s Turn`);
+    printBoard();
+    console.log(`It's ${getActivePlayer().getName()}'s Turn`);
   }
 
   const playRound = (row, col) => {
@@ -60,5 +68,8 @@ const gameController = (function gameController() {
     printNewRound();
   }
 
-  return { getActivePlayer, switchActivePlayer, printNewRound, }
+  // Display the board and announce the first player's turn
+  printNewRound();
+
+  return { getActivePlayer, switchActivePlayer, printNewRound, playRound, }
 })();
