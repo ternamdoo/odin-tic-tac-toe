@@ -19,7 +19,7 @@ const gameboard = (function Gameboard() {
       board[row][col] = marker;
       return true;
     } else {
-      console.log("You picked a marked spot. Look at the board and place your marker in an unmarked spot");
+      // console.log("You picked a marked spot. Look at the board and place your marker in an unmarked spot");
       return false;
     }
     // console.log(getBoard());
@@ -66,9 +66,14 @@ const gameController = (function gameController() {
   }
 
   const playRound = (row, col) => {
-    gameboard.placeMarker(row, col, activePlayer.getMarker());
-    switchActivePlayer();
-    printNewRound();
+    const validMove = gameboard.placeMarker(row, col, activePlayer.getMarker());
+    if (validMove) {
+      switchActivePlayer();
+      printNewRound();
+    } else {
+      console.log("You picked a marked spot. Look at the board and place your marker in an unmarked spot");
+      printNewRound();
+    }
   }
 
   // Display the board and announce the first player's turn
