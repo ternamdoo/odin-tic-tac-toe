@@ -51,6 +51,34 @@ const gameController = (function gameController() {
   const switchActivePlayer = () => {
     activePlayer = activePlayer === player1 ? player2 : player1;
   };
+
+  const checkWin = () => {
+    const board = gameboard.getBoard();
+
+    // Each sub-array in the array below represents one of all 8 possible winning combinations
+    // Each sub-array contains three child arrays, each with two elements representing the x and y indices of the cells
+    // that make up the winning combinations 
+    const winningCombos = [
+      [[0,0], [0,1], [0,2]],
+      [[1,0], [1,1], [1,2]],
+      [[2,0], [2,1], [2,2]],
+      [[0,0], [1,0], [2,0]],
+      [[0,1], [1,1], [2,1]],
+      [[0,2], [1,2], [2,2]],
+      [[0,0], [1,1], [2,2]],
+      [[0,2], [1,1], [2,0]],
+    ];
+
+    // check returns true is a win condition is met, and false if it is not met.
+    const check = winningCombos.some(([a, b, c]) => {
+      return (
+        board[a[0]][a[1]] !== "" && 
+        board[a[0]][a[1]] === board[b[0]][b[1]] &&
+        board[b[0]][b[1]] === board[c[0]][c[1]]
+      );
+    });
+    return check;
+  }
   
   // copy the board and display it in an easy to read format
   const printBoard = () => {
@@ -79,5 +107,5 @@ const gameController = (function gameController() {
   // Display the board and announce the first player's turn
   printNewRound();
 
-  return { getActivePlayer, switchActivePlayer, printNewRound, playRound, }
+  return { getActivePlayer, switchActivePlayer, printNewRound, playRound, checkWin, }
 })();
