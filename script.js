@@ -80,6 +80,10 @@ const gameController = (function gameController() {
     return check;
   }
   
+  const checkTie = () => {
+    return gameboard.getBoard().every((row) => row.every((cell) => cell !== ""));
+  }
+
   // copy the board and display it in an easy to read format
   const printBoard = () => {
     const board = gameboard.getBoard();
@@ -107,5 +111,5 @@ const gameController = (function gameController() {
   // Display the board and announce the first player's turn
   printNewRound();
 
-  return { getActivePlayer, switchActivePlayer, printNewRound, playRound, checkWin, }
+  return { getActivePlayer, switchActivePlayer, printNewRound, playRound, checkWin, checkTie, }
 })();
