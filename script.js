@@ -19,18 +19,16 @@ const gameboard = (function Gameboard() {
       board[row][col] = marker;
       return true;
     } else {
-      // console.log("You picked a marked spot. Look at the board and place your marker in an unmarked spot");
       return false;
     }
-    // console.log(getBoard());
-  }
+  };
 
   const resetBoard = () => {
     board.forEach(row => {
       row.fill("");
     });
     console.log(getBoard());
-  } 
+  };
 
   return { getBoard, placeMarker, resetBoard, }
 })();
@@ -78,11 +76,11 @@ const gameController = (function gameController() {
       );
     });
     return check;
-  }
+  };
   
   const checkTie = () => {
     return gameboard.getBoard().every((row) => row.every((cell) => cell !== ""));
-  }
+  };
 
   // copy the board and display it in an easy to read format
   const printBoard = () => {
@@ -90,12 +88,12 @@ const gameController = (function gameController() {
     board.forEach((row) => {
       console.log(row.map((cell) => cell || ".").join(" | "))
     });
-  }
+  };
 
   const printNewRound = () => {
     printBoard();
     console.log(`It's ${getActivePlayer().getName()}'s Turn`);
-  }
+  };
 
   const playRound = (row, col) => {
     const validMove = gameboard.placeMarker(row, col, activePlayer.getMarker());
@@ -106,7 +104,7 @@ const gameController = (function gameController() {
       console.log("You picked a marked spot. Look at the board and place your marker in an unmarked spot");
       printNewRound();
     }
-  }
+  };
 
   // Display the board and announce the first player's turn
   printNewRound();
